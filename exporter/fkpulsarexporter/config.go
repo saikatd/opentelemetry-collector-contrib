@@ -138,8 +138,8 @@ func (cfg *Config) generatePrivateKey(clientId, clientSecret, issuerUrl string) 
 	props := map[string]string{
 		"type":          "client_credentials",
 		"client_id":     clientId,
-		"client_secret": "Rxw8xELtPRXSJ6o5SEM13X79f6Fl6T/EmOyBHf6q8QJmInTP",
-		"issuer_url":    "https://service.authn-prod.fkcloud.in",
+		"client_secret": clientSecret,
+		"issuer_url":    issuerUrl,
 	}
 	jsonStr, err := json.Marshal(props)
 	if err != nil {
