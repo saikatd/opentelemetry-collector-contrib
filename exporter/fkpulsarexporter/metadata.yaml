@@ -1,4 +1,4 @@
-type: pulsar
+type: fkpulsar
 
 status:
   class: exporter

@@ -7,7 +7,7 @@ import (
 )
 
 const (
-	Type             = "pulsar"
+	Type             = "fkpulsar"
 	TracesStability  = component.StabilityLevelAlpha
 	MetricsStability = component.StabilityLevelAlpha
 	LogsStability    = component.StabilityLevelAlpha

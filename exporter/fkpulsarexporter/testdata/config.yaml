@@ -1,4 +1,4 @@
-pulsar:
+fkpulsar:
   topic: spans
   endpoint: pulsar://localhost:6650
   encoding: otlp-spans

@@ -7,13 +7,14 @@ package fkpulsarexporter // import "github.com/open-telemetry/opentelemetry-coll
 
 import (
 	"context"
-	"github.com/saikatd/opentelemetry-collector-contrib/exporter/fkpulsarexporter/internal/metadata"
 	"time"
 
 	"go.opentelemetry.io/collector/component"
 	"go.opentelemetry.io/collector/consumer"
 	"go.opentelemetry.io/collector/exporter"
 	"go.opentelemetry.io/collector/exporter/exporterhelper"
+
+	"github.com/saikatd/opentelemetry-collector-contrib/exporter/fkpulsarexporter/internal/metadata"
 )
 
 const (
