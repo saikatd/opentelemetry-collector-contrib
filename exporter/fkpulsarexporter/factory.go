@@ -13,8 +13,13 @@ import (
 	"go.opentelemetry.io/collector/consumer"
 	"go.opentelemetry.io/collector/exporter"
 	"go.opentelemetry.io/collector/exporter/exporterhelper"
+)
 
-	"github.com/saikatd/opentelemetry-collector-contrib/exporter/fkpulsarexporter/internal/metadata"
+const (
+	Type             = "fkpulsar"
+	TracesStability  = component.StabilityLevelAlpha
+	MetricsStability = component.StabilityLevelAlpha
+	LogsStability    = component.StabilityLevelAlpha
 )
 
 const (
@@ -48,11 +53,11 @@ func NewFactory(options ...FactoryOption) exporter.Factory {
 		o(f)
 	}
 	return exporter.NewFactory(
-		metadata.Type,
+		Type,
 		createDefaultConfig,
-		exporter.WithTraces(f.createTracesExporter, metadata.TracesStability),
-		exporter.WithMetrics(f.createMetricsExporter, metadata.MetricsStability),
-		exporter.WithLogs(f.createLogsExporter, metadata.LogsStability),
+		exporter.WithTraces(f.createTracesExporter, TracesStability),
+		exporter.WithMetrics(f.createMetricsExporter, MetricsStability),
+		exporter.WithLogs(f.createLogsExporter, LogsStability),
 	)
 }
 
