@@ -13,8 +13,6 @@ import (
 	"go.opentelemetry.io/collector/consumer"
 	"go.opentelemetry.io/collector/exporter"
 	"go.opentelemetry.io/collector/exporter/exporterhelper"
-
-	"github.com/saikatd/opentelemetry-collector-contrib/exporter/fkpulsarexporter/internal/metadata"
 )
 
 const (
