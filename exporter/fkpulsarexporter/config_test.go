@@ -15,8 +15,6 @@ import (
 	"go.opentelemetry.io/collector/component"
 	"go.opentelemetry.io/collector/confmap/confmaptest"
 	"go.opentelemetry.io/collector/exporter/exporterhelper"
-
-	"github.com/saikatd/opentelemetry-collector-contrib/exporter/fkpulsarexporter/internal/metadata"
 )
 
 func TestLoadConfig(t *testing.T) {
@@ -30,7 +28,7 @@ func TestLoadConfig(t *testing.T) {
 		expected component.Config
 	}{
 		{
-			id: component.NewIDWithName(metadata.Type, ""),
+			id: component.NewIDWithName("fkpulsar", ""),
 			expected: &Config{
 				TimeoutSettings: exporterhelper.TimeoutSettings{
 					Timeout: 20 * time.Second,
@@ -95,7 +93,7 @@ func TestClientOptions(t *testing.T) {
 	factory := NewFactory()
 	cfg := factory.CreateDefaultConfig()
 
-	sub, err := cm.Sub(component.NewIDWithName(metadata.Type, "").String())
+	sub, err := cm.Sub(component.NewIDWithName("fkpulsar", "").String())
 	require.NoError(t, err)
 	require.NoError(t, component.UnmarshalConfig(sub, cfg))
 
