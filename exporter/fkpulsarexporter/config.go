@@ -4,8 +4,6 @@
 package fkpulsarexporter // import "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/pulsarexporter"
 
 import (
-	"encoding/base64"
-	"encoding/json"
 	"fmt"
 	"time"
 
@@ -106,7 +104,8 @@ func (cfg *Config) auth() pulsar.Authentication {
 		return pulsar.NewAuthenticationToken(string(authentication.Token.Token))
 	}
 	if authentication.OAuth2 != nil {
-		privateKey, err := cfg.generatePrivateKey(authentication.OAuth2.ClientID, authentication.OAuth2.ClientSecret, authentication.OAuth2.IssuerURL)
+		privateKey, err := GeneratePrivateKey(authentication.OAuth2.ClientID, authentication.OAuth2.ClientSecret,
+			authentication.OAuth2.IssuerURL)
 		if err != nil {
 			return err
 		}
@@ -132,22 +131,6 @@ func (cfg *Config) auth() pulsar.Authentication {
 	}
 
 	return nil
-}
-
-func (cfg *Config) generatePrivateKey(clientId, clientSecret, issuerUrl string) (string, error) {
-	props := map[string]string{
-		"type":          "client_credentials",
-		"client_id":     clientId,
-		"client_secret": clientSecret,
-		"issuer_url":    issuerUrl,
-	}
-	jsonStr, err := json.Marshal(props)
-	if err != nil {
-		return "", err
-	}
-	encodedText := base64.StdEncoding.EncodeToString(jsonStr)
-	data := "data:application/json;base64," + encodedText
-	return data, nil
 }
 
 func (cfg *Config) clientOptions() pulsar.ClientOptions {
