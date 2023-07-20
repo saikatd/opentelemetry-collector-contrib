@@ -1,0 +1,14 @@
+pulsar:
+  topic: otel-pulsar
+  endpoint: pulsar://localhost:6500
+  consumer_name: otel-collector
+  subscription: otel-collector
+  tls_trust_certs_file_path: ca.pem
+  tls_allow_insecure_connection: false
+  auth:
+    oauth2:
+      issuer_url: http://issuerurl.com
+      client_id: client-id
+      audience: audience
+      client_secret: dummy-secret
+      scope: scope
