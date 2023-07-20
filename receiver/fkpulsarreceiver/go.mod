@@ -1,4 +1,4 @@
-module github.com/saikatd/opentelemetry-collector-contrib/exporter/fkpulsarreceiver
+module github.com/saikatd/opentelemetry-collector-contrib/receiver/fkpulsarreceiver
 
 go 1.20
 
