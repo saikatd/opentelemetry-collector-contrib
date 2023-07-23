@@ -41,7 +41,7 @@ type LogsMarshaler interface {
 func tracesMarshalers() map[string]TracesMarshaler {
 	otlpProto := newPdataTracesMarshaler(&ptrace.ProtoMarshaler{}, defaultEncoding)
 	otlpJSON := newPdataTracesMarshaler(&ptrace.JSONMarshaler{}, "otlp_json")
-	jaegerProto := jaegerMarshaler{marshaler: jaegerProtoBatchMarshaler{}}
+	jaegerProto := jaegerMarshaler{marshaler: jaegerProtoSpanMarshaler{}}
 	jaegerJSON := jaegerMarshaler{marshaler: newJaegerJSONMarshaler()}
 	return map[string]TracesMarshaler{
 		otlpProto.Encoding():   otlpProto,
